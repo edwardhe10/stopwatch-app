@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
+import LapTimes from "./LapTimes.js";
 
 function Stopwatch() {
   const [time, setTime] = useState(0);
-
   const [running, setRunning] = useState(false);
+  const [lapTimes, setLapTimes] = useState([]);
 
   useEffect(() => {
     let intervalID;
@@ -26,6 +27,17 @@ function Stopwatch() {
 
   const resetTimer = () => {
     setTime(0);
+    setLapTimes([]); // resetting timer resets lap times as well
+  };
+
+  const lapTimer = () => {
+    const lapTime = {
+      hrs,
+      mins: mins.toString().padStart(2, "0"),
+      secs: secs.toString().padStart(2, "0"),
+      millisecs: millisecs.toString().padStart(2, "0"),
+    };
+    setLapTimes([...lapTimes, lapTime]);
   };
 
   return (
@@ -39,10 +51,14 @@ function Stopwatch() {
         <button className="run-button" onClick={runTimer}>
           {running ? "Stop" : "Start"}{" "}
         </button>
+        <button className="lap-button" onClick={lapTimer}>
+          Lap
+        </button>
         <button className="reset-button" onClick={resetTimer}>
           Reset
         </button>
       </div>
+      <LapTimes lapTimes={lapTimes} />
     </div>
   );
 }
