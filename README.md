@@ -1,6 +1,4 @@
-App Link: https://64b3945b1f52c10adf151e50--thunderous-longma-f5d5a1.netlify.app/
-
-To-do: Add lap feature and better styling
+App Link: https://64b45f1c481b150008467aaa--thunderous-longma-f5d5a1.netlify.app/
 
 # Getting Started with Create React App
 
